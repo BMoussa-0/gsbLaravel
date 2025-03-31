@@ -266,6 +266,30 @@ class PdoGsb{
 		return $resultats;
 	}
 
+		/**
+	 * Retourne la liste de tous les visiteurs
+	 * @return array Liste des visiteurs
+	 */
+	public function getTousLesVisiteurs()
+	{
+		$req = "SELECT DISTINCT id, nom, prenom FROM visiteur ORDER BY nom, prenom";
+		$res = $this->monPdo->query($req);
+		$lesVisiteurs = $res->fetchAll(PDO::FETCH_ASSOC);
+		return $lesVisiteurs;
+	}
+
+	/**
+	 * Retourne la liste de tous les mois avec des frais
+	 * @return array Liste des mois
+	 */
+	public function getTousLesMois()
+	{
+		$req = "SELECT DISTINCT mois FROM fichefrais ORDER BY mois DESC";
+		$res = $this->monPdo->query($req);
+		$lesMois = $res->fetchAll(PDO::FETCH_ASSOC);
+		return $lesMois;
+	}
+
 }
 
 

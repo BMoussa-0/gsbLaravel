@@ -9,7 +9,10 @@ class EditerFraisController extends Controller
     function recupdonnees()
     {
         $recup = PdoGsb::recuperer();
-        return view('editerfrais');
+        $visiteurs = PdoGsb::getTousLesVisiteurs();
+        $mois = PdoGsb::getTousLesMois();
+
+        return view('editerfrais', compact('visiteurs', 'mois'));
     }
     
     /** 4).a recupere les frais pour une annee */
@@ -41,6 +44,5 @@ class EditerFraisController extends Controller
         
     return view('typefrais', compact('visiteurs', 'type'));
     }
-    
 } 
 ?>
